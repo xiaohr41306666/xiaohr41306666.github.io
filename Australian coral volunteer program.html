@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australian Coral Volunteer Program</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f8ff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 导航栏样式 */
+        header {
+            background-color: #006994;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* 英雄区域样式 */
+        .hero {
+            background: linear-gradient(rgba(0, 105, 148, 0.7), rgba(0, 105, 148, 0.7)), url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* 内容区域样式 */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        h2 {
+            color: #006994;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2.2rem;
+        }
+        
+        h3 {
+            color: #0096c7;
+            margin: 25px 0 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        /* 时间线样式 */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #006994;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid #006994;
+            border-radius: 50%;
+            top: 20px;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+        
+        /* 费用表格样式 */
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .cost-table th, .cost-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .cost-table th {
+            background-color: #006994;
+            color: white;
+        }
+        
+        .cost-table tr:nth-child(even) {
+            background-color: #f8fdff;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #004d6d;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #ff7e30;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #e56a1f;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .timeline-item:nth-child(odd)::after,
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#importance">Coral Importance</a></li>
+                <li><a href="#itinerary">Itinerary</a></li>
+                <li><a href="#resources">Resources & Cost</a></li>
+                <li><a href="#results">Research Results</a></li>
+                <li><a href="#join">Join Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <h1>Australian Coral Volunteer Program</h1>
+            <p>Join us in protecting the Great Barrier Reef through research, conservation, and community engagement</p>
+            <a href="#join" class="cta-button">Become a Volunteer</a>
+        </div>
+    </section>
+
+    <!-- 项目概述 -->
+    <section id="overview">
+        <div class="container">
+            <h2>Project Overview</h2>
+            <div class="content-grid">
+                <div class="card">
+                    <img src="https://cdn.britannica.com/64/155864-050-34FBD7A2/view-Great-Barrier-Reef-Australia-coast.jpg" alt="Great Barrier Reef">
+                    <h3>Location: Australia</h3>
+                    <p>Our main exploration area is the Great Barrier Reef on Australia's northeast coast - the world's largest and longest coral reef system, making it the perfect location for our conservation activities.</p>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Diving Training">
+                    <h3>Core Objectives</h3>
+                    <p>Through volunteer participation, we conduct diving training, field sampling, research interviews, and scientific studies to reveal the causes of coral loss and promote the importance of coral conservation.</p>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Coral Research">
+                    <h3>Expected Outcomes</h3>
+                    <p>Summarize experimental results, explain reasons for coral degradation, promote coral importance, and conduct outreach through QR codes, mini-programs, and WeChat public account links.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 珊瑚重要性 -->
+    <section id="importance">
+        <div class="container">
+            <h2>Why Coral Reefs Matter</h2>
+            <div class="content-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Marine Biodiversity">
+                    <h3>Marine Biodiversity</h3>
+                    <p>Coral reefs are the "rainforests of the sea," providing habitats for 25% of global marine species and supporting the balance of complex marine ecosystems.</p>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Coastal Protection">
+                    <h3>Coastal Protection</h3>
+                    <p>Coral reefs effectively buffer wave impacts, reduce coastal erosion, and lower the risk of damage from natural disasters such as tsunamis and storm surges.</p>
+                </div>
+                <div class="card">
+                    <img src="https://assets.newatlas.com/dims4/default/77be266/2147483647/strip/true/crop/1440x960+0+60/resize/1200x800!/quality/90/?url=http:%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2Farchive%2Fbleaching-returns-gbr-7.jpg" alt="Coral Bleaching">
+                    <h3>Urgent Need for Conservation</h3>
+                    <p>Field research shows that local residents have insufficient awareness of coral ecological value, and coral degradation has affected fishery resources and tourism economy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目行程 -->
+    <section id="itinerary">
+        <div class="container">
+            <h2>Project Itinerary</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Diving Training (3-5 days)</h3>
+                        <p>Ensure volunteers master safe diving skills to reach Australian coral breeding grounds. Training covers theoretical knowledge, underwater breathing techniques, equipment use, and emergency response.</p>
+                        <p><em>Note: If you don't have professional diving certificates, we provide short-term training (additional fee applies).</em></p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Field Sampling & Research (1 week)</h3>
+                        <p><strong>Coral Site Sampling (4 days):</strong> Collect coral samples to document growth status and distribution.</p>
+                        <p><strong>Field Interviews (3 days):</strong> Conduct surveys with local residents to understand awareness of coral reef issues.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Scientific Research (1 week)</h3>
+                        <p>Conduct specialized research in biology and chemistry on coral loss, decay, and population decline. Analyze key factors affecting coral survival with support from professional laboratories and expert research teams.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 资源与费用 -->
+    <section id="resources">
+        <div class="container">
+            <h2>Resources & Cost Description</h2>
+            <div class="content-grid">
+                <div class="card">
+                    <h3>Accommodation</h3>
+                    <p>Accommodation will be uniformly arranged for volunteers, with selected hotels offering convenient locations and comfortable environments.</p>
+                </div>
+                <div class="card">
+                    <h3>Professional Support</h3>
+                    <p>Equipped with experienced professional divers, partner institutions in coral research, and advanced laboratories with research experts.</p>
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 40px;">Cost Breakdown</h3>
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Basic Project Costs</td>
+                        <td>Covers core expenses for diving training, field sampling, research interviews, and laboratory research.</td>
+                    </tr>
+                    <tr>
+                        <td>Accommodation Fees</td>
+                        <td>Includes hotel accommodation expenses during the Australian project.</td>
+                    </tr>
+                    <tr>
+                        <td>Professional Support Fees</td>
+                        <td>Covers professional diver guidance, research expert consultation, and laboratory use.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 研究成果 -->
+    <section id="results">
+        <div class="container">
+            <h2>Research Results</h2>
+            <div class="content-grid">
+                <div class="card">
+                    <h3>Coral Loss Causes</h3>
+                    <p>Experimental results show that coral loss is mainly related to rising ocean temperatures, ocean acidification, and overfishing, which disrupt the coral's living environment and food chain balance.</p>
+                </div>
+                <div class="card">
+                    <h3>Coral Decay Mechanisms</h3>
+                    <p>Research found that coral decay is mostly caused by bacterial infections and algal competition; when coral immunity declines, it becomes vulnerable to pathogen invasion, leading to tissue necrosis.</p>
+                </div>
+                <div class="card">
+                    <h3>Coral Population Decline</h3>
+                    <p>Comprehensive analysis indicates that human activities (coastal development, pollution) and climate change are core causes of sharp coral population decline, requiring targeted conservation strategies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 加入我们部分 -->
+<section id="join">
+    <div class="container">
+        <h2>Join Our Program</h2>
+        <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+            <p>We are looking for passionate volunteers to join our coral conservation efforts. No prior experience is necessary - we provide all the training you need.</p>
+            <p>Help us protect the Great Barrier Reef while gaining valuable research experience and making a real difference in marine conservation.</p>
+            <a href="#" class="cta-button">Apply Now</a>
+            <p style="margin-top: 20px;">Scan the QR code below to learn more about our program:</p>
+            <div style="background-color: #f8f8f8; display: inline-block; padding: 20px; border-radius: 10px; margin-top: 15px;">
+                <img src="https://i.ibb.co/rKhZT4J7/qrcode.png"  alt="scan the QR code to join us" style="width: 150px; height: 150px;">
+               
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>Australian Coral Volunteer Program</p>
+            <p>Contact us: info@coralvolunteer.org | Follow us on WeChat</p>
+            <p>&copy; 2023 Australian Coral Volunteer Program. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动效果
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
